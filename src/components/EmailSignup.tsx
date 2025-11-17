@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { Button } from "./Button";
 import { signupEmail } from "@/app/actions";
+import { Button } from "./Button";
 
 export function EmailSignup() {
   const [email, setEmail] = useState("");

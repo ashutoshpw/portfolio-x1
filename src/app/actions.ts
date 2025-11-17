@@ -1,8 +1,8 @@
 "use server";
 
-import { writeFile, mkdir } from "fs/promises";
-import { existsSync } from "fs";
-import { join } from "path";
+import { existsSync } from "node:fs";
+import { mkdir, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 
 export async function signupEmail(formData: FormData) {
   const email = formData.get("email") as string;
@@ -34,4 +34,3 @@ export async function signupEmail(formData: FormData) {
     return { error: "Failed to save email" };
   }
 }
-

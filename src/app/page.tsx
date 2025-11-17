@@ -21,8 +21,8 @@ export default function Home() {
           </div>
 
           <p className="max-w-2xl text-lg leading-8 text-foreground/70 sm:text-xl">
-            Building scalable web applications and digital experiences. Portfolio
-            coming soon.
+            Building scalable web applications and digital experiences.
+            Portfolio coming soon.
           </p>
         </div>
 
