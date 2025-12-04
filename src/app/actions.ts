@@ -1,9 +1,5 @@
 "use server";
 
-import { existsSync } from "node:fs";
-import { mkdir, writeFile } from "node:fs/promises";
-import { join } from "node:path";
-
 export async function signupEmail(formData: FormData) {
   const email = formData.get("email") as string;
 
@@ -16,21 +12,9 @@ export async function signupEmail(formData: FormData) {
     return { error: "Invalid email format" };
   }
 
-  try {
-    const dataDir = join(process.cwd(), "data");
-    if (!existsSync(dataDir)) {
-      await mkdir(dataDir, { recursive: true });
-    }
+  const timestamp = new Date().toISOString();
+  const entry = `${timestamp} - ${email}\n`;
+  console.log("NOTIFY_EMAIL", entry);
 
-    const filePath = join(dataDir, "signups.txt");
-    const timestamp = new Date().toISOString();
-    const entry = `${timestamp} - ${email}\n`;
-
-    await writeFile(filePath, entry, { flag: "a" });
-
-    return { success: true, message: "Email saved successfully" };
-  } catch (error) {
-    console.error("Error saving email:", error);
-    return { error: "Failed to save email" };
-  }
+  return { success: true, message: "Email saved successfully" };
 }
